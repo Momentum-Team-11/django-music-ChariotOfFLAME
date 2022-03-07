@@ -1,10 +1,10 @@
-from socket import fromshare
 from django import forms
-from .models import Music
+from .models import Album
+
 
 class MusicForm(forms.ModelForm):
     class Meta:
-        model = Music
+        model = Album
         fields = [
             'title',
             'artist',

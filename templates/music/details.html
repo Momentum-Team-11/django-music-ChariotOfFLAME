@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container is-fluid">
+    <h1 class="title">Album Details</h1>
+
+    <div class="columns is-flex-direction-column">
+        <form action="{% url 'delete' pk=album.pk %}" method="GET">
+            {% csrf_token %}
+            <div class="box column is-3 has-background-info-dark">
+                <h2 class="title is-4 has-text-primary-light">{{ album.title }}</h2>
+                <div class="subtitle has-text-info-light">{{ album.artist }}</div>
+                <div class="subtitle is-6 has-text-success-light">{{ album.created_at }}</div>
+                
+            
+                <p>
+                    <a class="has-text-link-light" href="{% url 'list_albums' %}">Back to List</a><br>
+                    <a class="has-text-link-light" href="{% url 'edit' pk=album.pk %}">Edit Album</a><br>    
+                    <a class="has-text-danger-light" href="{% url 'delete' pk=album.pk %}">Delete Album</a>
+                </p>
+            </div>
+        </form>
+        </div>
+</div>
+{% endblock %}

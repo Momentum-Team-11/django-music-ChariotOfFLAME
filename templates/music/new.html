@@ -1,5 +1,17 @@
 {% extends "base.html" %}
 
 {% block content %}
-<h1>New Albums go here</h1>
+<div class="container is-fluid">
+    <h1 class="title">Add Album</h1>
+
+    <div>
+    <form action="{% url 'new' %}" method="POST">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <div>
+        <button class="button is-success is-small" type="submit">Add Album</button>
+        </div>
+    </form>
+    </div>
+</div>
 {% endblock %}

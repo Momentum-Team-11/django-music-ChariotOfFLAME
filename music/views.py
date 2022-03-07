@@ -26,7 +26,7 @@ def edit_album(request, pk):
     if request.method == 'GET':
         form = MusicForm(instance=album)
     else:
-        form = MusicForm(data=request.Post, instance=album)
+        form = MusicForm(data=request.POST, instance=album)
         if form.is_valid():
             form.save()
             return redirect(to="list_albums")
@@ -38,6 +38,12 @@ def delete_album(request, pk):
     album = get_object_or_404(Album, pk=pk)
     if request.method == 'POST':
         album.delete()
-        return redirect(to="list_albums")
+        return redirect(to='list_albums')
+
     return render(request, "music/delete.html",
+                  {"album": album})
+
+def details_album(request, pk):
+    album = get_object_or_404(Album, pk=pk)
+    return render(request, "music/details.html",
                   {"album": album})
